@@ -1,0 +1,11 @@
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\bin\Debug\netcoreapp2.0\ChatServer.deps.json
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\bin\Debug\netcoreapp2.0\ChatServer.runtimeconfig.json
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\bin\Debug\netcoreapp2.0\ChatServer.runtimeconfig.dev.json
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\bin\Debug\netcoreapp2.0\ChatServer.dll
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\bin\Debug\netcoreapp2.0\ChatServer.pdb
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\obj\Debug\netcoreapp2.0\ChatServer.csprojResolveAssemblyReference.cache
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\obj\Debug\netcoreapp2.0\ChatServer.csproj.CoreCompileInputs.cache
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\obj\Debug\netcoreapp2.0\ChatServer.AssemblyInfoInputs.cache
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\obj\Debug\netcoreapp2.0\ChatServer.AssemblyInfo.cs
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\obj\Debug\netcoreapp2.0\ChatServer.dll
+F:\Projects\ChatApplication\ServerSide\ChatServer\ChatServer\obj\Debug\netcoreapp2.0\ChatServer.pdb
