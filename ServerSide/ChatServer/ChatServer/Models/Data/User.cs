@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ChatServer.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace ChatServer.Models.Data
 {
@@ -18,5 +19,11 @@ namespace ChatServer.Models.Data
         [Required(ErrorMessage = "Please provide a Valid Email Address.")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string EmailAddress { get; set; }
+        public bool EmailConfirmed { get; set; }
+        public string PasswordHash { get; set; }
+        public Gender Gender { get; set; }
+        public string Phone { get; set; }
+        public bool PhoneConfirmed { get; set; }
+        public string Address { get; set; }
     }
 }
