@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../_models/user';
 import { HubConnection } from '@aspnet/signalr-client';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-chat',
@@ -12,9 +14,12 @@ export class ChatComponent implements OnInit {
   nick = '';
   message = '';
   messages: string[] = [];
-
+  currentUser: User;
+  constructor(private userService: UserService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
   ngOnInit() {
-    this.nick = window.prompt('Your name:', 'John');
+    this.nick = this.currentUser.username;
 
     this._hubConnection = new HubConnection('http://localhost:5035/chat');
     console.log('Connecting');

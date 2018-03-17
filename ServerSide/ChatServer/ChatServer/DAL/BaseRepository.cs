@@ -32,12 +32,15 @@ namespace ChatServer.DAL
 
         public virtual void Insert<TEntity>(TEntity entity) where TEntity : BaseClass
         {
+            entity.CreatedAt = DateTime.UtcNow;
+            entity.UpdatedAt = DateTime.UtcNow;
             _dbContext.Set<TEntity>().Add(entity);
             _dbContext.SaveChanges();
         }
 
         public virtual void Update<TEntity>(TEntity entity) where TEntity : BaseClass
         {
+            entity.UpdatedAt = DateTime.UtcNow;
             _dbContext.Set<TEntity>().Update(entity);
             _dbContext.SaveChanges();
         }

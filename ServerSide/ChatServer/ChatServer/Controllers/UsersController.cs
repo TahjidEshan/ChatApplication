@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
+using ChatServer.ModelBuilders;
 
 namespace ChatServer.Controllers
 {
@@ -65,14 +66,12 @@ namespace ChatServer.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("register")]
         public IActionResult Register([FromBody]UserDto userDto)
         {
-            var user = _mapper.Map<User>(userDto);
-
             try
             {
-                _baseService.Save(user);
+                UserModelBuilder.Register(_baseService, _mapper, userDto);
                 return Ok();
             }
             catch (AppException ex)
