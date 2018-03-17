@@ -1,4 +1,5 @@
-﻿using ChatServer.DAL;
+﻿using AutoMapper;
+using ChatServer.DAL;
 using ChatServer.Models;
 using ChatServer.Services;
 using Microsoft.AspNetCore.Builder;
@@ -22,6 +23,7 @@ namespace ChatServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddAutoMapper();
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder

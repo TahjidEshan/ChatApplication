@@ -20,7 +20,8 @@ namespace ChatServer.Models.Data
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string EmailAddress { get; set; }
         public bool EmailConfirmed { get; set; }
-        public string PasswordHash { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
         public Gender Gender { get; set; }
         public string Phone { get; set; }
         public bool PhoneConfirmed { get; set; }

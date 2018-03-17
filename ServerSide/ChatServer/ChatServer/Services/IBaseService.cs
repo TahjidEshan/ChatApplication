@@ -12,5 +12,6 @@ namespace ChatServer.Services
         void Update(User User);
         User GetUserById(Guid Id);
         IQueryable<User> GetUsers();
+        User Authenticate(string Username, string Password);
     }
 }

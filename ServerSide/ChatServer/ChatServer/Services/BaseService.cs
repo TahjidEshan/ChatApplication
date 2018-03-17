@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using ChatServer.DAL;
+using ChatServer.Helpers;
 using ChatServer.Models.Data;
 
 
@@ -36,6 +37,19 @@ namespace ChatServer.Services
         public IQueryable<User> GetUsers()
         {
             return BaseRepository.GetQuery<User>();
+        }
+        public User Authenticate(string Username, string Password)
+        {
+            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password)) return null;
+
+            User User = BaseRepository.GetQuery<User>().SingleOrDefault(x => x.UserName.Equals(Username));
+            
+            if (User == null) return null;
+
+            if (!ServiceHelpers.VerifyPasswordHash(Password, User.PasswordHash, User.PasswordSalt))
+                return null;
+
+            return User;
         }
     }
 }
