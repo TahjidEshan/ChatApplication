@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using AutoMapper;
+using System.Text;
 using ChatServer.DTOs;
 using ChatServer.Helpers;
-using ChatServer.Models.Data;
 using ChatServer.Services;
-using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using ChatServer.Models.Data;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ChatServer.Controllers
 {
