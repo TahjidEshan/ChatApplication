@@ -4,6 +4,12 @@ using ChatServer.DTOs;
 using ChatServer.Helpers;
 using ChatServer.Services;
 using ChatServer.Models.Data;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ChatServer.ModelBuilders
 {
@@ -23,6 +29,36 @@ namespace ChatServer.ModelBuilders
             User.PasswordHash = PasswordHash;
             User.PasswordSalt = PasswordSalt;
             BaseService.Save(User);
+        }
+        internal static UserDto Authenticate(IBaseService BaseService, IMapper Mapper, UserDto UserDto, AppSettings AppSettings)
+        {
+            var user = BaseService.Authenticate(UserDto.Username, UserDto.Password);
+
+            if (user == null)
+                return null;
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(AppSettings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+
+            return new UserDto
+            {
+                Id = user.Id,
+                Username = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Token = tokenString
+            };
         }
     }
 }

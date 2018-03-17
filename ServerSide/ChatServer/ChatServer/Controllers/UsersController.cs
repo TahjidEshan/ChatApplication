@@ -35,34 +35,9 @@ namespace ChatServer.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody]UserDto userDto)
         {
-            var user = _baseService.Authenticate(userDto.Username, userDto.Password);
-
-            if (user == null)
-                return Unauthorized();
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-
-            // return basic user info (without password) and token to store client side
-            return Ok(new
-            {
-                Id = user.Id,
-                Username = user.UserName,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Token = tokenString
-            });
+            var User = UserModelBuilder.Authenticate(_baseService, _mapper, userDto, _appSettings);
+            if (User == null) return Unauthorized();
+            return Ok(new { User.Id, User.Username, User.FirstName, User.LastName, User.Token });
         }
 
         [AllowAnonymous]
