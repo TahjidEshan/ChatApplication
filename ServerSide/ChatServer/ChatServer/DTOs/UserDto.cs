@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿using ChatServer.Enums;
+using System;
 namespace ChatServer.DTOs
 {
     public class UserDto
@@ -15,5 +12,8 @@ namespace ChatServer.DTOs
         public string Password { get; set; }
         public string EmailAddress { get; set; }
         public string Token { get; set; }
+        public Gender Gender { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
     }
 }

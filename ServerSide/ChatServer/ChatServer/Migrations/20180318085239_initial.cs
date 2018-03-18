@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ChatServer.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,11 +27,18 @@ namespace ChatServer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     EmailAddress = table.Column<string>(nullable: false),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    Gender = table.Column<int>(nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     MiddleName = table.Column<string>(maxLength: 50, nullable: true),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
+                    PhoneConfirmed = table.Column<bool>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     UserName = table.Column<string>(maxLength: 50, nullable: false)
                 },

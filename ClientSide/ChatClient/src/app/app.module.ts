@@ -16,7 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ChatComponent } from './chat/chat.component';
-
+import { EqualValidator } from './_directives/equal-validator.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { ChatComponent } from './chat/chat.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ChatComponent
+    ChatComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,

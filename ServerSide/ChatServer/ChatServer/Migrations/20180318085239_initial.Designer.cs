@@ -12,8 +12,8 @@ using System;
 namespace ChatServer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180311085202_User-Modifications")]
-    partial class UserModifications
+    [Migration("20180318085239_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,7 +120,9 @@ namespace ChatServer.Migrations
                     b.Property<string>("MiddleName")
                         .HasMaxLength(50);
 
-                    b.Property<string>("PasswordHash");
+                    b.Property<byte[]>("PasswordHash");
+
+                    b.Property<byte[]>("PasswordSalt");
 
                     b.Property<string>("Phone");
 
