@@ -6,7 +6,7 @@ namespace ChatServer.Models.Data
     public class User: BaseClass
     {
         [Required(ErrorMessage = "Please provide User Name.")]
-        [StringLength(50, MinimumLength = 2)]
+        [StringLength(50, MinimumLength = 5)]
         public string UserName { get; set; }
         [Required(ErrorMessage = "Please provide First Name.")]
         [StringLength(50, MinimumLength = 2)]
@@ -20,7 +20,9 @@ namespace ChatServer.Models.Data
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string EmailAddress { get; set; }
         public bool EmailConfirmed { get; set; }
+        [Required]
         public byte[] PasswordHash { get; set; }
+        [Required]
         public byte[] PasswordSalt { get; set; }
         public Gender Gender { get; set; }
         public string Phone { get; set; }

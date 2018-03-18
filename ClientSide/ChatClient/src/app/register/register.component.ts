@@ -12,7 +12,6 @@ import { AlertService, UserService } from '../_services/index';
 export class RegisterComponent {
 
   model: any = {};
-  confirmPassword = '';
   loading = false;
 
   constructor(

@@ -19,6 +19,7 @@ namespace ChatServer.ModelBuilders
         {
             User User = Mapper.Map<User>(UserDto);
             if (string.IsNullOrWhiteSpace(UserDto.Password)) throw new AppException("Password is required.");
+            if (!UserDto.Password.Equals(UserDto.ConfirmPassword)) throw new AppException("Passwords do not match");
             if (BaseService.GetUsers().Any(x => x.UserName.Equals(User.UserName)))
                 throw new AppException("The Username " + User.UserName + " is already taken, " +
                     "please choose another username.");
