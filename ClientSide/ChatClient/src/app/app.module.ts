@@ -26,7 +26,7 @@ import { EqualValidator } from './_directives/equal-validator.directive';
     LoginComponent,
     RegisterComponent,
     ChatComponent,
-    EqualValidator
+    EqualValidator,
   ],
   imports: [
     BrowserModule,
